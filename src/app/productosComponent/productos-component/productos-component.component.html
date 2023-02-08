@@ -1,8 +1,13 @@
 <div class="container">
-    <table class="table">
+    <div class="row text-center mt-5 mb-5">
+      <h1>{{titulo}}</h1>
+    </div>
+    <div *ngIf="!conDatos" class=" alert alert-danger rounded-3">{{errorConexion}}</div>
+    <table *ngIf="conDatos" class="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
+            <th scope="col">Código</th>
             <th scope="col">Producto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Descripcion</th>
@@ -10,13 +15,14 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let producto in productos">
-                <th scope="row">producto.id</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.id}}</td>
+                <td>{{producto.codigoProducto}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.fechaRegistro}}</td>
             </tr>
-            
         </tbody>
-    </table>
+      </table>
 </div>

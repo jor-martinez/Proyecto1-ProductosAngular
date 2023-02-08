@@ -5,17 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RestServiceService {
+  private apiurl:String = "http://localhost:8081/apiProductos";  
 
-  private productos: any[] = [];
-  private errorConexion: String = "";
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.getProductos();
+  }
 
   public getProductos(){
-    this.httpClient.get('http://localhost:8080/productos').subscribe((resp:any)=>{
-      if (resp == null){
-        this.errorConexion = "No hay conexión con la base de datos, comunicate con soporte"
-      }
-    })
+    return this.httpClient.get<any>
+      (this.apiurl + "/productos");
   }
 }
